@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<a href="./index.html">Back to Home</a>
+
+<div>
+    <label>Title</label>
+    <input id="title" name="title" />
+</div>
+<div>
+    <label>Body</label>
+    <input id="body" name="body" />
+</div>
+<div>
+    <label>User ID</label>
+    <input id="userId" name="userId" />
+</div>
+<div>
+    <button onclick="saveData()">Save</button>
+</div>
+
+<script>
+const saveData = () => {
+    const title = document.getElementById('title').value
+    const body = document.getElementById('body').value
+    const userId = document.getElementById('userId').value
+    
+    const request = {
+        title: title,
+        body: body,
+        userId: userId,
+    }
+
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(request)
+    }).then((res) => res.json()).then((res) => {
+        console.log(res)
+        alert('Data saved')
+    })
+}
+</script>
+
+</body>
+</html>
