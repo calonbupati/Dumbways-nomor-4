@@ -8,34 +8,24 @@
 <a href="./index.html">Back to Home</a>
 
 <div>
-    <label>Title</label>
-    <input id="title" name="title" />
+    <label>name</label>
+    <input id="name" name="name" />
 </div>
-<div>
-    <label>Body</label>
-    <input id="body" name="body" />
-</div>
-<div>
-    <label>User ID</label>
-    <input id="userId" name="userId" />
-</div>
+
 <div>
     <button onclick="saveData()">Save</button>
 </div>
 
 <script>
 const saveData = () => {
-    const title = document.getElementById('title').value
-    const body = document.getElementById('body').value
-    const userId = document.getElementById('userId').value
+    const name = document.getElementById('name').value
     
     const request = {
-        title: title,
-        body: body,
-        userId: userId,
+        name: name,
+
     }
 
-    fetch('https://jsonplaceholder.typicode.com/posts', {
+    fetch('http://localhost:3000/singers', {
         method: 'POST',
         headers: {
             'Content-type': 'application/json; charset=UTF-8',

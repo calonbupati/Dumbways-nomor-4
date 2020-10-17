@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<a href="./index.html">Back to Home</a>
+
+<div>
+    <label>Title</label>
+    <input id="title" name="title" />
+</div>
+<div>
+    <label>Duration</label>
+    <input id="duration" name="duration" />
+</div>
+<div>
+    <label>Photo</label>
+    <input id="photo" name="photo" />
+</div>
+<div>
+    <label>Description</label>
+    <input id="description" name="description" />
+</div>
+<div>
+    <label>ID Genre</label>
+    <input id="id_genre" name="userId" />
+</div>
+<div>
+    <label>ID Singer</label>
+    <input id="id_singer" name="id_singer" />
+</div>
+
+<div>
+    <button onclick="saveData()">Save</button>
+</div>
+
+<script>
+const saveData = () => {
+    const title = document.getElementById('title').value
+    const duration = document.getElementById('duration').value
+    const photo = document.getElementById('photo').value
+    const description = document.getElementById('description').value
+    const id_genre = document.getElementById('id_genre').value
+    const id_singer = document.getElementById('id_singer').value
+    
+    const request = {
+        title: title,
+        duration: duration,
+        photo: photo,
+        description: description,
+        id_genre: id_genre,
+        id_singer: id_singer
+    }
+
+    fetch('http://localhost:3000/music', {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(request)
+    }).then((res) => res.json()).then((res) => {
+        console.log(res)
+        alert('Data saved')
+    })
+}
+</script>
+
+</body>
+</html>

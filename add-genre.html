@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<a href="./index.html">Back to Home</a>
+
+<div>
+    <label>name</label>
+    <input id="name" name="name" />
+</div>
+
+<div>
+    <button onclick="saveData()">Save</button>
+</div>
+
+<script>
+const saveData = () => {
+    const name = document.getElementById('name').value
+    
+    const request = {
+        name: name,
+
+    }
+
+    fetch('http://localhost:3000/genres', {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(request)
+    }).then((res) => res.json()).then((res) => {
+        console.log(res)
+        alert('Data saved')
+    })
+}
+</script>
+
+</body>
+</html>
